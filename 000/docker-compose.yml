@@ -46,5 +46,14 @@ services:
     build:
       context: ../images/ladder/
     ports:
-      - 30000:22
+      - :22
     tty: true
+
+  mysql:
+    container_name: mysql-client
+    build:
+      context: ../images/ladder/
+    entrypoint: /usr/bin/mysql
+    tty: true
+    profiles:
+      - extra
