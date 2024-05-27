@@ -1,7 +1,6 @@
 services:
 
   mysql84:
-    container_name: mysql84
     image: mysql:8.4
     volumes:
       - ./etc/mysql84-my.cnf:/etc/my.cnf:ro
@@ -11,7 +10,6 @@ services:
       - extra
 
   mysql80:
-    container_name: mysql80
     image: mysql:8.0
     volumes:
       - ./etc/mysql80-my.cnf:/etc/my.cnf:ro
@@ -20,7 +18,6 @@ services:
     command: --default-authentication-plugin=mysql_native_password
 
   mysql57:
-    container_name: mysql57
     image: mysql:5.7
     volumes:
       - ./etc/mysql57-my.cnf:/etc/my.cnf:ro
@@ -31,7 +28,6 @@ services:
       - extra
 
   mysql56:
-    container_name: mysql56
     image: mysql:5.6
     volumes:
       - ./etc/mysql56-my.cnf:/etc/my.cnf:ro
@@ -42,7 +38,6 @@ services:
       - extra
 
   ladder:
-    container_name: ladder
     build:
       context: ../images/ladder/
     ports:
@@ -50,7 +45,6 @@ services:
     tty: true
 
   mysql:
-    container_name: mysql-client
     build:
       context: ../images/ladder/
     entrypoint: /usr/bin/mysql

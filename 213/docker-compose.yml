@@ -1,0 +1,104 @@
+services:
+
+  mysql80-node1:
+    image: mysql:8.0
+    volumes:
+      - ./etc/mysql80-my.cnf:/etc/my.cnf
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: 
+      --server_id=1
+      --gtid_mode=on
+      --enforce_gtid_consistency=on
+      --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY"
+      --default-authentication-plugin=mysql_native_password
+    extra_hosts:
+       - "node1:213.0.113.11"
+       - "node2:213.0.113.12"
+       - "node3:213.0.113.13"
+    networks:
+      backend:
+        ipv4_address: 213.0.113.11
+
+  mysql80-node2:
+    image: mysql:8.0
+    volumes:
+      - ./etc/mysql80-my.cnf:/etc/my.cnf
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: 
+      --server_id=2
+      --gtid_mode=on
+      --enforce_gtid_consistency=on
+      --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY"
+      --default-authentication-plugin=mysql_native_password
+    extra_hosts:
+       - "node1:213.0.113.11"
+       - "node2:213.0.113.12"
+       - "node3:213.0.113.13"
+    networks:
+      backend:
+        ipv4_address: 213.0.113.12
+
+  mysql80-node3:
+    image: mysql:8.0
+    volumes:
+      - ./etc/mysql80-my.cnf:/etc/my.cnf
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: 
+      --server_id=3
+      --gtid_mode=on
+      --enforce_gtid_consistency=on
+      --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY"
+      --default-authentication-plugin=mysql_native_password
+    extra_hosts:
+       - "node1:213.0.113.11"
+       - "node2:213.0.113.12"
+       - "node3:213.0.113.13"
+    networks:
+      backend:
+        ipv4_address: 213.0.113.13
+
+  ladder:
+    container_name: ladder
+    build:
+      context: ../images/ladder/
+    ports:
+      - :22
+    tty: true
+    networks:
+      - backend
+
+  mysql:
+    container_name: mysql-client
+    build:
+      context: ../images/ladder/
+    entrypoint: /usr/bin/mysql
+    tty: true
+    profiles:
+      - extra
+    networks:
+      - backend
+
+  mysqlsh:
+    container_name: mysql-shell
+    build:
+      context: ../images/mysqlsh/
+    tty: true
+    profiles:
+      - extra
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 213.0.113.0/24
+  
