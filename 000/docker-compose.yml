@@ -15,7 +15,8 @@ services:
       - ./etc/mysql80-my.cnf:/etc/my.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    command: --default-authentication-plugin=mysql_native_password
+    command: |
+      --default-authentication-plugin=mysql_native_password
 
   mysql57:
     image: mysql:5.7
@@ -23,7 +24,8 @@ services:
       - ./etc/mysql57-my.cnf:/etc/my.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    command: --default-authentication-plugin=mysql_native_password
+    command: |
+      --default-authentication-plugin=mysql_native_password
     profiles:
       - extra
 
@@ -33,7 +35,8 @@ services:
       - ./etc/mysql56-my.cnf:/etc/my.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    command: --default-authentication-plugin=mysql_native_password
+    command: |
+      --default-authentication-plugin=mysql_native_password
     profiles:
       - extra
 
