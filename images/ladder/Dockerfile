@@ -5,7 +5,10 @@ RUN apk add openssh bash shadow mysql-client mariadb-connector-c \
     && ssh-keygen -A \
     && sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -i 's/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config \
-    && echo "root:$(mkpasswd -s </dev/null)" | chpasswd -e
+    && echo "root:$(mkpasswd -s </dev/null)" | chpasswd -e \
+    && mkdir /initer.d
+
+COPY ./scripts/initer-entrypoint.sh /initer-entrypoint.sh
 
 EXPOSE 22
 
