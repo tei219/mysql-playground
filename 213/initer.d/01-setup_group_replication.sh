@@ -1,3 +1,5 @@
+set -f 
+
 echo $(date) setting up node1
 mysql -h mysql80-node1 \
 	-e "SET GLOBAL group_replication_bootstrap_group=ON;" \

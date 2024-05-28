@@ -86,7 +86,6 @@ services:
 
   ladder:
     hostname: ladder
-    container_name: ladder
     build:
       context: ../images/ladder/
     ports:
