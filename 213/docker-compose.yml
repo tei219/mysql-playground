@@ -53,6 +53,12 @@ services:
       --loose-group-replication-single-primary-mode=on 
       --loose-group-replication-enforce-update-everywhere-checks=off 
       --loose-group_replication_bootstrap_group=off
+    healthcheck:
+      test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
+      start_period: 20s
+      retries: 10
+      interval: 10s
+      timeout: 10s
     depends_on:
       mysql80-node1:
         condition: service_healthy
@@ -80,6 +86,12 @@ services:
       --loose-group-replication-single-primary-mode=on 
       --loose-group-replication-enforce-update-everywhere-checks=off 
       --loose-group_replication_bootstrap_group=off
+    healthcheck:
+      test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
+      start_period: 20s
+      retries: 10
+      interval: 10s
+      timeout: 10s
     depends_on:
       mysql80-node1:
         condition: service_healthy
@@ -91,6 +103,13 @@ services:
     ports:
       - :22
     tty: true
+    depends_on:
+      mysql80-node1:
+        condition: service_healthy
+      mysql80-node2:
+        condition: service_healthy
+      mysql80-node3:
+        condition: service_healthy
 
   mysql:
     hostname: mysql-client
@@ -116,5 +135,5 @@ services:
       - ./initer.d:/initer.d:ro
     entrypoint: /initer-entrypoint.sh
     tty: true
-    profiles:
-      - extra
+    depends_on:
+      - ladder
