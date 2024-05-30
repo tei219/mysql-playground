@@ -98,6 +98,7 @@ services:
 
   ladder:
     hostname: ladder
+    image: ladder:latest
     build:
       context: ../images/ladder/
     ports:
@@ -113,6 +114,7 @@ services:
 
   mysql:
     hostname: mysql-client
+    image: ladder:latest
     build:
       context: ../images/ladder/
     entrypoint: /usr/bin/mysql
@@ -122,6 +124,7 @@ services:
 
   mysqlsh:
     hostname: mysql-shell
+    image: mysqlsh:latest
     build:
       context: ../images/mysqlsh/
     tty: true
@@ -129,6 +132,7 @@ services:
       - extra
 
   initer:
+    image: ladder:latest
     build:
       context: ../images/ladder/
     volumes:

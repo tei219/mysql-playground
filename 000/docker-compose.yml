@@ -41,6 +41,7 @@ services:
       - extra
 
   ladder:
+    image: ladder:latest
     build:
       context: ../images/ladder/
     ports:
@@ -48,6 +49,7 @@ services:
     tty: true
 
   mysql:
+    image: ladder:latest
     build:
       context: ../images/ladder/
     entrypoint: /usr/bin/mysql
