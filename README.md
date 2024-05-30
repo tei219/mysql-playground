@@ -5,8 +5,8 @@ Docker compose を利用した環境セットになっているので Docker 環
 
 ## 使い方
 ### 必要環境
-docker 及び docker compose が使える環境が必要です。  
-下記バージョンで確認にしています。  
+`docker` 及び `docker compose` が使える環境が必要です。  
+下記バージョンで確認しています。  
 
 ```sh
 $ docker version
@@ -43,14 +43,14 @@ Server: Docker Engine - Community
 プレイグラウンドを利用する際は、各シナリオ（ディレクトリ）にある個別の Readme を参照してください。
 
 ### 起動
-基本的に Docker compose でシナリオに必要な環境が起動します。  
+基本的に `docker compose` でシナリオに必要な環境が起動します。  
 ```sh
 $ docker compose up -d
 ```
 
 ### 停止
-Docker compose で環境を停止します。  
-データの有無で挙動が変わる場合がありますので、必要がなければ停止後に削除してください。
+使用後は環境を停止します。  
+データの有無で挙動が変わる場合があるので、必要がなければ停止後に削除してください。
 ```sh
 $ docker compose stop
 $ docker compose rm -f
