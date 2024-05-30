@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add openssh bash shadow mysql-client mariadb-connector-c \
+RUN apk --no-cache add openssh bash shadow mysql-client mariadb-connector-c \
     && chsh root -s /bin/bash \
     && ssh-keygen -A \
     && sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
