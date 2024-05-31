@@ -2,8 +2,6 @@ services:
 
   mysql84:
     image: mysql:8.4
-    volumes:
-      - ./etc/mysql84-my.cnf:/etc/my.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     profiles:
@@ -11,8 +9,6 @@ services:
 
   mysql80:
     image: mysql:8.0
-    volumes:
-      - ./etc/mysql80-my.cnf:/etc/my.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
@@ -20,8 +16,6 @@ services:
 
   mysql57:
     image: mysql:5.7
-    volumes:
-      - ./etc/mysql57-my.cnf:/etc/my.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
@@ -31,8 +25,6 @@ services:
 
   mysql56:
     image: mysql:5.6
-    volumes:
-      - ./etc/mysql56-my.cnf:/etc/my.cnf:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
