@@ -9,4 +9,4 @@ RUN apt update \
   && apt update \
   && apt install -y mysql-shell
 
-ENTRYPOINT [ "/usr/bin/mysqlsh"]
+ENTRYPOINT [ "/usr/bin/mysqlsh" ]

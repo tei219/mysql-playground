@@ -1,0 +1,24 @@
+services:
+
+  ubuntu2404:
+    image: ubuntu2404:latest
+    build:
+      context: ../images/os/ubuntu2404/
+    privileged: true
+
+  ladder:
+    image: ladder:latest
+    build:
+      context: ../images/ladder/
+    ports:
+      - :22
+    tty: true
+
+  mysql:
+    image: ladder:latest
+    build:
+      context: ../images/ladder/
+    entrypoint: /usr/bin/mysql
+    tty: true
+    profiles:
+      - extra

@@ -12,4 +12,4 @@ COPY ./scripts/initer-entrypoint.sh /initer-entrypoint.sh
 
 EXPOSE 22
 
-ENTRYPOINT [ "/usr/sbin/sshd", "-D"]
+ENTRYPOINT [ "/usr/sbin/sshd", "-D" ]
