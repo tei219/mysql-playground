@@ -1,3 +1,4 @@
+name: gr80
 services:
 
   mysql80-node1:
