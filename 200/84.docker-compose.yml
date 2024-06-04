@@ -1,0 +1,23 @@
+services:
+
+  mysql84:
+    image: mysql:8.4
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  ladder:
+    image: ladder:latest
+    build:
+      context: ../images/ladder/
+    ports:
+      - :22
+    tty: true
+
+  mysql:
+    image: ladder:latest
+    build:
+      context: ../images/ladder/
+    entrypoint: /usr/bin/mysql
+    tty: true
+    profiles:
+      - extra
