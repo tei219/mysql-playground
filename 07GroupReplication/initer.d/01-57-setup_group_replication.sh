@@ -14,14 +14,13 @@ version(){
 
 mysql_version=$(mysql -h node1 -sNe "select @@version;")
 
-if version 8.0.0 $mysql_version 8.3.99 ; then
+if version 5.6.0 $mysql_version 5.7.99 ; then
 	echo $(date) setting up node1
 
 	mysql -h node1 \
 		-e "set session sql_log_bin = 0;" \
 		-e "create user repl@'%' identified by 'repl';" \
 		-e "grant replication slave on *.* to repl@'%';" \
-		-e "grant backup_admin on *.* to repl@'%';" \
 		-e "flush privileges;"
 
 	mysql -h node1 \
@@ -36,7 +35,6 @@ if version 8.0.0 $mysql_version 8.3.99 ; then
 		-e "set session sql_log_bin = 0;" \
 		-e "create user repl@'%' identified by 'repl';" \
 		-e "grant replication slave on *.* to repl@'%';" \
-		-e "grant backup_admin on *.* to repl@'%';" \
 		-e "flush privileges;"
 
 	mysql -h node2 \
@@ -50,7 +48,6 @@ if version 8.0.0 $mysql_version 8.3.99 ; then
 		-e "set session sql_log_bin = 0;" \
 		-e "create user repl@'%' identified by 'repl';" \
 		-e "grant replication slave on *.* to repl@'%';" \
-		-e "grant backup_admin on *.* to repl@'%';" \
 		-e "flush privileges;"
 
 	mysql -h node3 \

@@ -4,8 +4,6 @@ services:
   node1:
     image: mysql:5.7
     hostname: node1
-    volumes:
-      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
@@ -14,7 +12,10 @@ services:
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
       --default-authentication-plugin=mysql_native_password 
-      --plugin-load=group_replication.so 
+      --transaction_write_set_extraction=XXHASH64
+      --master_info_repository=TABLE
+      --relay_log_info_repository=TABLE
+      --plugin_load=group_replication.so
       --relay-log-recovery=on 
       --loose-group-replication-start-on-boot=off 
       --loose-group-replication-group-name=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee 
@@ -33,8 +34,6 @@ services:
   node2:
     image: mysql:5.7
     hostname: node2
-    volumes:
-      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
@@ -42,8 +41,11 @@ services:
       --gtid_mode=on 
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
-      --default-authentication-plugin=mysql_native_password 
-      --plugin-load=group_replication.so 
+      --default-authentication-plugin=mysql_native_password
+      --transaction_write_set_extraction=XXHASH64
+      --master_info_repository=TABLE
+      --relay_log_info_repository=TABLE
+      --plugin_load=group_replication.so
       --relay-log-recovery=on 
       --loose-group-replication-start-on-boot=off 
       --loose-group-replication-group-name=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee 
@@ -65,8 +67,6 @@ services:
   node3:
     image: mysql:5.7
     hostname: node3
-    volumes:
-      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
@@ -75,7 +75,10 @@ services:
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
       --default-authentication-plugin=mysql_native_password 
-      --plugin-load=group_replication.so 
+      --transaction_write_set_extraction=XXHASH64
+      --master_info_repository=TABLE
+      --relay_log_info_repository=TABLE
+      --plugin_load=group_replication.so
       --relay-log-recovery=on 
       --loose-group-replication-start-on-boot=off 
       --loose-group-replication-group-name=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee 

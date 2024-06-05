@@ -44,6 +44,7 @@ if version 8.4.0 $mysql_version 99.0.0 ; then
 		-e "flush privileges;"
 
 	mysql -h node2 \
+		-e "RESET BINARY LOGS AND GTIDS;" \
 		-e "CHANGE REPLICATION SOURCE TO SOURCE_USER='repl', SOURCE_PASSWORD='repl' FOR CHANNEL 'group_replication_recovery';" \
 		-e "START GROUP_REPLICATION;"
 
@@ -59,6 +60,7 @@ if version 8.4.0 $mysql_version 99.0.0 ; then
 		-e "flush privileges;"
 	
 	mysql -h node3 \
+		-e "RESET BINARY LOGS AND GTIDS;" \
 		-e "CHANGE REPLICATION SOURCE TO SOURCE_USER='repl', SOURCE_PASSWORD='repl' FOR CHANNEL 'group_replication_recovery';" \
 		-e "START GROUP_REPLICATION;"
 
