@@ -1,8 +1,9 @@
 name: sn80
 services:
 
-  mysql80:
+  node1:
     image: mysql:8.0
+    hostname: node1
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
@@ -10,6 +11,7 @@ services:
 
   ladder:
     image: ladder:latest
+    hostname: ladder
     build:
       context: ../images/ladder/
     ports:

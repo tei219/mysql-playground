@@ -1,8 +1,9 @@
 name: sn56
 services:
 
-  mysql56:
+  node1:
     image: mysql:5.6
+    hostname: node1
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
@@ -10,6 +11,7 @@ services:
 
   ladder:
     image: ladder:latest
+    hostname: ladder
     build:
       context: ../images/ladder/
     ports:
