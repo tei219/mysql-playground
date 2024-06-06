@@ -1,14 +1,3 @@
-シングルノード
-
-やること
-必要なコンフィグ？
-サイズチェック？
-
-backup
-バージョン間の違い
-エラー対応
-
-
 # Single Node
 ## なにするだ
 MySQL の単体構成時の挙動やバージョン間での差異について学びます
@@ -26,6 +15,7 @@ MySQL の単体構成時の挙動やバージョン間での差異について�
 | mysqlsh | (dynamic) | mysqlsh       | extra   |               |
 
 ※`profile` が `extra` になっているものは自動起動しません  
+※`node1` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 ## シナリオ
  * [バージョン間の違いを確認する](./scenario01/README.md)
