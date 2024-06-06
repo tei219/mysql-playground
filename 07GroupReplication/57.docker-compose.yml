@@ -8,6 +8,9 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=1 
+      --log_bin=binlog
+      --log_slave_updates=on
+      --binlog_checksum=none
       --gtid_mode=on 
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
@@ -38,6 +41,9 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=2 
+      --log_bin=binlog
+      --log_slave_updates=on
+      --binlog_checksum=none
       --gtid_mode=on 
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
@@ -71,6 +77,9 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=3 
+      --log_bin=binlog
+      --log_slave_updates=on
+      --binlog_checksum=none
       --gtid_mode=on 
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
