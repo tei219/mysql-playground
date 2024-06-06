@@ -2,7 +2,7 @@
 
 ## なにするだ
 デフォルトイメージは MySQL 8.0 にしています  
-MySQL 5.6 では機能がないので Group Replication は組めません  
+MySQL 5.6 以下では機能がないので Group Replication は組めまへん  
 
 ### 起動するやつリスト
 | service | hostname  | image         | profile | note                   |
@@ -12,7 +12,7 @@ MySQL 5.6 では機能がないので Group Replication は組めません
 | node3   | (dynamic) | mysql:8.0     |         | パスなし               |
 | ladder  | (dynamic) | ladder:latest |         | パスなし sshd          |
 | mysql   | (dynamic) | ladder:latest | extra   |                        |
-| mysqlsh | (dynamic) | ladder:latest | extra   |                        |
+| mysqlsh | (dynamic) | ubuntu        | extra   |                        |
 | initer  | (dynamic) | ladder:latest |         | 初期化スクリプト実行用 |
 
 

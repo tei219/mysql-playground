@@ -57,8 +57,4 @@ if version 8.0.0 $mysql_version 8.3.99 ; then
 		-e "RESET MASTER;" \
 		-e "CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='repl' FOR CHANNEL 'group_replication_recovery';" \
 		-e "START GROUP_REPLICATION;"
-
-	echo $(date) select * from performance_schema.replication_group_members
-	mysql -h node3 \
-		-e "select * from performance_schema.replication_group_members;"
 fi
