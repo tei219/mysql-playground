@@ -7,12 +7,12 @@ MySQL の単体構成時の挙動やバージョン間での差異について�
 各コンテナのパスワードは **なし** で作ってますです  
 
 ### 起動するやつリスト 
-| service | hostname  | image         | profile | note          |
-| ------- | --------- | ------------- | ------- | ------------- |
-| node1   | node1     | (mysql:8.0)   |         | パスなし      |
-| ladder  | ladder    | ladder:latest |         | パスなし sshd |
-| mysql   | (dynamic) | ladder:latest | extra   |               |
-| mysqlsh | (dynamic) | mysqlsh       | extra   |               |
+| service | hostname  | image       | profile | note |
+| ------- | --------- | ----------- | ------- | ---- |
+| node1   | node1     | (mysql:8.0) |         |      |
+| ladder  | ladder    | ladder      |         | sshd |
+| mysql   | (dynamic) | ladder      | extra   |      |
+| mysqlsh | (dynamic) | mysqlsh     | extra   |      |
 
 ※`profile` が `extra` になっているものは自動起動しません  
 ※`node1` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
