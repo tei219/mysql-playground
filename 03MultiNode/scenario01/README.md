@@ -1,6 +1,6 @@
 # データ連携をする <!-- omit in toc -->
-- [hoghgoe](#hoghgoe)
+- [federate?](#federate)
 
 ## やってみよう <!-- omit in toc -->
 
-## hoghgoe
+## federate?

@@ -1,5 +1,4 @@
-# 500 Group Replication
-
+# Group Replication
 ## なにするだ
 デフォルトイメージは MySQL 8.0 にしています  
 MySQL 5.6 以下では機能がないので Group Replication は組めまへん  
@@ -22,7 +21,7 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 3. わわわ
 
 
-## やってみよう
+=============================
 
 ### 確認
 シングルマスタだよ  
@@ -32,10 +31,6 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 ### マスタ切り替え
 ### ノード追加
 ### ノード削除
-
-
-
-=============================
 
 
 ## docker compose up -d 

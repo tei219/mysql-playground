@@ -1,6 +1,6 @@
-# MHA
+# Chain Replication
 ## なにするだ
-MHA 構成と挙動を学びます
+MySQL のチェーンレプリケーションと挙動を学びます
 
 [ 概要図 ]
 
