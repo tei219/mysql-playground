@@ -1,10 +1,123 @@
 services:
 
+  # RHEL 8,9
+  rhel9:
+    image: redhat/ubi9-init
+    privileged: true
+
+  rhel8:
+    image: redhat/ubi8-init
+    privileged: true
+
+  # CentOS 6-,7-,8
+  centos8:
+    image: centos:8
+    privileged: true
+    command: /sbin/init
+
+  centos7:
+    image: centos:7
+    privileged: true
+    command: /sbin/init
+
+  centos6:
+    image: centos6:latest
+    build:
+      context: ../images/os/centos6/
+    privileged: true
+    command: /sbin/init
+
+  # SUSE 15
+
+  # OpenSUSE 15
+
+  # Amazon Linux 2,2023
+  amazonlinux2023:
+    image: amazonlinux2023:latest
+    build:
+      context: ../images/os/amazonlinux2023/
+    privileged: true
+    command: /sbin/init
+
+  amazonlinux2:
+    image: amazonlinux2:latest
+    build:
+      context: ../images/os/amazonlinux2/
+    privileged: true
+    command: /sbin/init
+
+  # Debian 10,11,12
+  debian12:
+    image: debian12:latest
+    build:
+      context: ../images/os/debian12/
+    privileged: true
+    command: /sbin/init
+
+  debian11:
+    image: debian11:latest
+    build:
+      context: ../images/os/debian11/
+    privileged: true
+    command: /sbin/init
+
+  debian10:
+    image: debian10:latest
+    build:
+      context: ../images/os/debian10/
+    privileged: true
+    command: /sbin/init
+
+  # Ubuntu 2004,2204,2404
   ubuntu2404:
     image: ubuntu2404:latest
     build:
       context: ../images/os/ubuntu2404/
     privileged: true
+
+  ubuntu2204:
+    image: ubuntu2204:latest
+    build:
+      context: ../images/os/ubuntu2204/
+    privileged: true
+
+  ubuntu2004:
+    image: ubuntu2004:latest
+    build:
+      context: ../images/os/ubuntu2004/
+    privileged: true
+
+  # Oracle 8,9
+
+  # Rocky Linux 8,9
+  rockylinux9:
+    image: rockylinux9:latest
+    build:
+      context: ../images/os/rockylinux9/
+    privileged: true
+
+  rockylinux8:
+    image: rockylinux8:latest
+    build:
+      context: ../images/os/rockylinux8/
+    privileged: true
+
+  # Alma Linux 8,9
+  almalinux9:
+    image: almalinux:9
+    privileged: true
+    command: /sbin/init
+
+  almalinux8:
+    image: almalinux:8
+    privileged: true
+    command: /sbin/init
+
+  # Alpine latest
+  alpine:
+    image: alpine
+    privileged: true
+    command: /sbin/init
 
   ladder:
     image: ladder:latest
