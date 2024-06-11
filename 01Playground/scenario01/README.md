@@ -10,7 +10,7 @@
 ### 環境を起動する
 `docker compose up -d` で環境を起動します。`mysql80` と `ladder` コンテナが起動します
 ```sh
-~/mysql-playground/01Beginning$ docker compose up -d
+~/mysql-playground/01Playground$ docker compose up -d
 [+] Running 3/3
  ✔ Network playground_default      Created                                                  0.2s 
  ✔ Container playground-ladder-1   Started                                                  0.5s 
@@ -21,12 +21,12 @@
 起動した `mysql80` は ポートを露出してないので `ladder` に接続してから `mysql コマンド` を叩きます  
 `ladder` が露出しているポートを確認するには `docker compose port` を使います
 ```sh
-~/mysql-playground/01Beginning$ docker compose port ladder 22
+~/mysql-playground/01Playground$ docker compose port ladder 22
 0.0.0.0:32777
 ```
 ssh は `root` で接続可能です
 ```sh
-~/mysql-playground/01Beginning$ ssh -o StrictHostKeyChecking=no localhost -l root -p 32777
+~/mysql-playground/01Playground$ ssh -o StrictHostKeyChecking=no localhost -l root -p 32777
 Warning: Permanently added '[localhost]:32777' (ED25519) to the list of known hosts.
 Welcome to Alpine!
 
@@ -72,13 +72,13 @@ Connection to localhost closed.
 ### MySQL 8.4 に接続する
 `mysql84` は起動していないので別途起動します
 ```sh
-~/mysql-playground/01Beginning$ docker compose up -d mysql84
+~/mysql-playground/01Playground$ docker compose up -d mysql84
 [+] Running 1/1
  ✔ Container playground-mysql84-1  Started                                                  0.3s
  ```
  接続の仕方は同様です
  ```sh
-~/mysql-playground/01Beginning$ ssh -o StrictHostKeyChecking=no localhost -l root -p 32777
+~/mysql-playground/01Playground$ ssh -o StrictHostKeyChecking=no localhost -l root -p 32777
 Welcome to Alpine!
 
 The Alpine Wiki contains a large amount of how-to guides and general
@@ -104,15 +104,14 @@ Connection to localhost closed.
 `mysql` クライアントイメージを利用して SSH 越しではなく、コンテナへ直接コマンド発行も可能です  
 確認しておきましょう
 ```sh
-~/mysql-playground/01Beginning$ docker compose run --rm mysql -h mysql80 -e "select @@hostname;"
+~/mysql-playground/01Playground$ docker compose run --rm mysql -h mysql80 -e "select @@hostname;"
 +--------------+
 | @@hostname   |
 +--------------+
 | 2501ad079d72 |
 +--------------+
 
-~/mysql-playground/01Beginning$ docker compose run --rm mysql -h mysql84 -e "select @
-@hostname;"
+~/mysql-playground/01Playground$ docker compose run --rm mysql -h mysql84 -e "select @@hostname;"
 +--------------+
 | @@hostname   |
 +--------------+
@@ -122,12 +121,12 @@ Connection to localhost closed.
 ### 環境を停止し削除する
 一通りの環境への理解が得られたら環境を停止し削除します
 ```sh
-~/mysql-playground/01Beginning$ docker compose stop
+~/mysql-playground/01Playground$ docker compose stop
 [+] Stopping 2/2
  ✔ Container playground-ladder-1   Stopped                                                  0.4s 
  ✔ Container playground-mysql80-1  Stopped                                                  1.3s 
 
-~/mysql-playground/01Beginning$ docker compose rm -f
+~/mysql-playground/01Playground$ docker compose rm -f
 Going to remove playground-mysql80-1, playground-ladder-1
 [+] Removing 2/0
  ✔ Container playground-ladder-1   Removed                                                  0.0s 
@@ -136,15 +135,15 @@ Going to remove playground-mysql80-1, playground-ladder-1
 
 個別に起動したコンテナも削除しておきましょう
 ```sh
-~/mysql-playground/01Beginning$ docker compose ps
+~/mysql-playground/01Playground$ docker compose ps
 NAME                   IMAGE       COMMAND                  SERVICE   CREATED              STATUS              PORTS
 playground-mysql84-1   mysql:8.4   "docker-entrypoint.s…"   mysql84   About a minute ago   Up About a minute   3306/tcp, 33060/tcp
 
-~/mysql-playground/01Beginning$ docker compose stop mysql84
+~/mysql-playground/01Playground$ docker compose stop mysql84
 [+] Stopping 1/1
  ✔ Container playground-mysql84-1  Stopped                                                  0.9s 
 
-~/mysql-playground/01Beginning$ docker compose rm mysql84
+~/mysql-playground/01Playground$ docker compose rm mysql84
 ? Going to remove playground-mysql84-1 Yes
 [+] Removing 1/0
  ✔ Container playground-mysql84-1  Removed                                                  0.0s
