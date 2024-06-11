@@ -1,0 +1,27 @@
+name: mha57
+services:
+
+  node1:
+    image: mha57
+    build:
+      context: ../images/mha/node57/
+    hostname: node1
+    privileged: true
+
+  ladder:
+    image: ladder:latest
+    hostname: ladder
+    build:
+      context: ../images/ladder/
+    ports:
+      - :22
+    tty: true
+
+  mysql:
+    image: ladder:latest
+    build:
+      context: ../images/ladder/
+    entrypoint: /usr/bin/mysql
+    tty: true
+    profiles:
+      - extra
