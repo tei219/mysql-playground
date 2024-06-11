@@ -17,7 +17,8 @@ MySQL のレプリケーションと挙動を学びます
 | mysqlsh | (dynamic) | mysqlsh     | extra   |                    |
 
 ※`profile` が `extra` になっているものは自動起動しません  
-※`node1` ~ `node3` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
+※`node1` ~ `node3` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています  
+※レプリケーションは **ポジションベース** なレプリケーションです  
 
 ## シナリオ
  * [データ連携をする](./scenario01/README.md)

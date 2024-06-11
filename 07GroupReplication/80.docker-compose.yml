@@ -96,13 +96,6 @@ services:
     ports:
       - :22
     tty: true
-    depends_on:
-      node1:
-        condition: service_healthy
-      node2:
-        condition: service_healthy
-      node3:
-        condition: service_healthy
 
   mysql:
     hostname: mysql-client
@@ -132,4 +125,9 @@ services:
     entrypoint: /initer-entrypoint.sh
     tty: true
     depends_on:
-      - ladder
+      node1:
+        condition: service_healthy
+      node2:
+        condition: service_healthy
+      node3:
+        condition: service_healthy
