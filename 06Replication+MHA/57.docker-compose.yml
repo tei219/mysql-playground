@@ -4,7 +4,7 @@ services:
   node1:
     image: mha57
     build:
-      context: ../images/mha/node57/
+      context: ../images/mha/57node/
     hostname: node1
     privileged: true
 

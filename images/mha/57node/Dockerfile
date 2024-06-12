@@ -1,6 +1,8 @@
 FROM centos:7
 
-RUN yum install -y wget perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager \
+RUN yum install -y wget \
+    perl-DBD-MySQL perl-Config-Tiny perl-Log-Dispatch perl-Parallel-ForkManager \
+    iproute openssh-server epel-release \
     && wget https://github.com/yoshinorim/mha4mysql-node/releases/download/v0.58/mha4mysql-node-0.58-0.el7.centos.noarch.rpm \
     && yum install -y mha4mysql-node-0.58-0.el7.centos.noarch.rpm \
     && wget http://repo.mysql.com/mysql-community-release-el7.rpm \
