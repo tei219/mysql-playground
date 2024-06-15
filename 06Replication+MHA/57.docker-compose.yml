@@ -6,6 +6,8 @@ services:
     hostname: node1
     build:
       context: ../images/mha/57node/
+    volumes:
+      - ./node1/etc/my.cnf:/etc/my.cnf
     privileged: true
 
   node2:
@@ -13,6 +15,8 @@ services:
     hostname: node2
     build:
       context: ../images/mha/57node/
+    volumes:
+      - ./node2/etc/my.cnf:/etc/my.cnf
     privileged: true
 
   node3:
@@ -20,6 +24,18 @@ services:
     hostname: node3
     build:
       context: ../images/mha/57node/
+    volumes:
+      - ./node3/etc/my.cnf:/etc/my.cnf
+    privileged: true
+
+  manager:
+    image: manager
+    hostname: manager
+    build:
+      context: ../images/mha/manager/
+    volumes:
+      - ./manager/etc/app1.cnf:/etc/app1.cnf
+      - ./manager/usr/lib/systemd/system/mha-app1.service:/usr/lib/systemd/system/mha-app1.service
     privileged: true
 
   ladder:
