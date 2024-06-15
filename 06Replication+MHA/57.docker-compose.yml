@@ -2,10 +2,24 @@ name: mha57
 services:
 
   node1:
-    image: mha57
+    image: 57node
+    hostname: node1
     build:
       context: ../images/mha/57node/
-    hostname: node1
+    privileged: true
+
+  node2:
+    image: 57node
+    hostname: node2
+    build:
+      context: ../images/mha/57node/
+    privileged: true
+
+  node3:
+    image: 57node
+    hostname: node3
+    build:
+      context: ../images/mha/57node/
     privileged: true
 
   ladder:
