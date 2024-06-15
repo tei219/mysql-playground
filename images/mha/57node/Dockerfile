@@ -17,6 +17,8 @@ RUN yum install -y wget \
     && mysqld --initialize-insecure --user=mysql \
     && systemctl enable mysqld \
     && sed -i 's/^#PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config \
+    && sed -i 's/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config \
+    && echo root: | chpasswd \
     && systemctl enable sshd \
     && mkdir /root/.ssh \
     && chmod 700 /root/.ssh 
