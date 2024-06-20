@@ -10,9 +10,12 @@ repl_password=repl
 
 [server0]
 hostname=node1
+candidate_master=1
 
 [server1]
 hostname=node2
+candidate_master=1
 
 [server2]
 hostname=node3
+candidate_master=0

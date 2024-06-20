@@ -21,7 +21,8 @@ RUN yum install -y wget \
     && echo root: | chpasswd \
     && systemctl enable sshd \
     && mkdir /root/.ssh \
-    && chmod 700 /root/.ssh 
+    && chmod 700 /root/.ssh \
+    && rm -f /var/lib/mysql/auto.cnf
 
 COPY ./sshkeys/* /root/.ssh/
 
