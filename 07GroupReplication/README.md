@@ -3,16 +3,58 @@
 デフォルトイメージは MySQL 8.0 にしています  
 MySQL 5.6 以下では機能がないので Group Replication は組めまへん  
 
+```sh
+ ┌─ docker compose ──────────────────────────────────────────────────────┐ 
+ │                                                                       │ 
+ │                                                                       │ 
+ │  ─────┬───────┬───────┬─────────┬─────┬─────┬─────────┬─────────┬──── │ 
+ │       │       │       │         │     │     │         │         │     │ 
+ │   ┌───┴──┐ ┌──┴──┐ ┌──┴────┐ ┌──┴───┐ │ ┌───┴───┐ ┌───┴───┐ ┌───┴───┐ │ 
+ │   │ladder│ │mysql│ │mysqlsh│ │initer│ │ │ node1 │ │ node2 │ │ node3 │ │ 
+ │   │      │ │extra│ │extra  │ │      │ │ │       │ │       │ │       │ │ 
+ │   └──*───┘ └─────┘ └───────┘ └──────┘ │ └───────┘ └───────┘ └───────┘ │ 
+ │      22                               │                               │ 
+ │      ▲                                │                               │ 
+ │      │                            ┌───┴─────┐                         │ 
+ │      │                            │ manager │                         │ 
+ │      │                            │         │                         │ 
+ │      │                            └─────────┘                         │ 
+ └──────*────────────────────────────────────────────────────────────────┘ 
+       some                                                                
+```
+
 ### 起動するやつリスト
-| service | hostname  | image         | profile | note                   |
-| ------- | --------- | ------------- | ------- | ---------------------- |
-| node1   | (dynamic) | mysql:8.0     |         | パスなし               |
-| node2   | (dynamic) | mysql:8.0     |         | パスなし               |
-| node3   | (dynamic) | mysql:8.0     |         | パスなし               |
-| ladder  | (dynamic) | ladder:latest |         | パスなし sshd          |
-| mysql   | (dynamic) | ladder:latest | extra   |                        |
-| mysqlsh | (dynamic) | ubuntu        | extra   |                        |
-| initer  | (dynamic) | ladder:latest |         | 初期化スクリプト実行用 |
+| service | hostname  | image         | profile | topology | note           |
+| ------- | --------- | ------------- | ------- | -------- | -------------- |
+| node1   | node1     | mysql:8.0     |         | master   | server-id=1    |
+| node2   | node2     | mysql:8.0     |         | slave    | server-id=2    |
+| node3   | node3     | mysql:8.0     |         | slave    | server-id=3    |
+| ladder  | ladder    | local/ladder  |         |          | sshd           |
+| mysql   | (dynamic) | local/ladder  | extra   |          |                |
+| mysqlsh | (dynamic) | local/mysqlsh | extra   |          |                |
+| initer  | (dynamic) | local/ladder  |         |          | for initialize |
+
+
+## Group Replication のトポロジ
+```sh
+ ┌── GR ──────────────────────┐ 
+ │                            │ 
+ │  ┌───────┐     ┌───────┐   │ 
+ │  │ node1 │◄───►│ node2 │   │ 
+ │  │ master│     │ slave │   │ 
+ │  └───────┘     └───────┘   │ 
+ │        ▲            ▲      │ 
+ │        │            │      │ 
+ │        │            ▼      │ 
+ │        │       ┌───────┐   │ 
+ │        └──────►│ node3 │   │ 
+ │                │ slave │   │ 
+ │                └───────┘   │ 
+ │                            │ 
+ └────────────────────────────┘ 
+                                
+```
+取り急ぎ シングルマスタ 構成です  
 
 
 ## シナリオ

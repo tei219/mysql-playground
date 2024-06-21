@@ -2,19 +2,31 @@
 ## なにするだ
 MySQL の単体構成時の挙動やバージョン間での差異について学びます
 
-[ 概要図 ]
-
+```sh
+┌─ docker compose ──────────────────────────────────────────────────────┐
+│                                                                       │
+│                                                                       │
+│  ─────┬───────┬───────┬─────────────┬──────────────────────────────── │
+│       │       │       │             │                                 │
+│   ┌───┴──┐ ┌──┴──┐ ┌──┴────┐    ┌───┴───┐                             │
+│   │ladder│ │mysql│ │mysqlsh│    │ node1 │                             │
+│   │      │ │extra│ │extra  │    │       │                             │
+│   └──*───┘ └─────┘ └───────┘    └───────┘                             │
+│      22                                                               │
+│      ▲                                                                │
+│      │                                                                │
+└──────*────────────────────────────────────────────────────────────────┘
+      some                                                               
+```
 各コンテナのパスワードは **なし** で作ってますです  
 
 ### 起動するやつリスト 
-| service | hostname  | image       | profile | note |
-| ------- | --------- | ----------- | ------- | ---- |
-| node1   | node1     | (mysql:8.0) |         |      |
-| ladder  | ladder    | ladder      |         | sshd |
-| mysql   | (dynamic) | ladder      | extra   |      |
-| mysqlsh | (dynamic) | mysqlsh     | extra   |      |
+| service | hostname  | image         | profile | note |
+| ------- | --------- | ------------- | ------- | ---- |
+| node1   | node1     | mysql:8.0     |         |      |
+| ladder  | ladder    | local/ladder  |         | sshd |
+| mysql   | (dynamic) | local/ladder  | extra   |      |
 
-※`profile` が `extra` になっているものは自動起動しません  
 ※`node1` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 ## シナリオ

@@ -72,7 +72,6 @@ services:
       - extra
 
   mysqlsh:
-    hostname: mysql-shell
     image: mysqlsh:latest
     build:
       context: ../images/mysqlsh/

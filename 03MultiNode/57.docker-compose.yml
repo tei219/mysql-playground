@@ -48,7 +48,6 @@ services:
 
   mysqlsh:
     hostname: mysql-shell
-    image: mysqlsh:latest
     build:
       context: ../images/mysqlsh/
     tty: true
