@@ -1,17 +1,20 @@
 # images
 ## `ladder`
-`sshd` のコンテナイメージです。各シナリオ環境への踏み台として起動します
+`sshd` のコンテナイメージです。各シナリオ環境への踏み台として起動します  
+下記にあるようにいくつかの用途にも使えるように作成しています  
 
 
 ### ladder as `mysql`
 `mysql client` のコンテナイメージとして エンドポイントを `/usr/bin/mysql` に指定して利用します
 
 ### ladder as `initer`
-環境構築用のバッチを起動する `bash` のコンテナイメージとして エンドポイントを `/initer-entrypoint.sh` に指定して利用します  
-`/initer.d` をボリュームマッピングすれば 数字順でソートされたバッチを実行できます 
+環境構築用バッチを起動する `bash` のコンテナイメージとして エンドポイントを `/initer-entrypoint.sh` に指定して利用します  
+`/initer.d` をボリュームマッピングして 数字順でソートされたバッチ を実行します 
+
+<details>
+<summary>数字順でソートされたバッチ</summary>
 
 ```sh
---各スクリプト
 $ grep . initer.d/*
 initer.d/00.echo.sh:echo "Hello, everyone"
 initer.d/10.date.sh:date
@@ -34,6 +37,7 @@ Thu May 30 09:44:14 UTC 2024
     inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
        valid_lft forever preferred_lft forever
 ```
+</details>
 
 ## `mysqlsh`
 `mysql-shell (mysqlsh)` のコンテナイメージです  
@@ -43,3 +47,11 @@ Thu May 30 09:44:14 UTC 2024
 ## `os/*`
 `upstart` もしくは `systemd` が起動するようにしたコンテナイメージです  
 デフォルトで `/sbin/init` が入ってるものはそのまま利用しています  
+
+## `mha/57node`
+MHA 環境用 MySQL 5.7 のコンテナイメージです  
+centos:7 ベース、systemd を利用しています
+
+## `mha/manager`
+MHA 環境用 mha manager のコンテナイメージです  
+centos:7 ベース、systemd を利用しています
