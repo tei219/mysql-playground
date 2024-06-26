@@ -63,3 +63,8 @@ MHA 構成と挙動を学びます
 
 ## シナリオ
  * [mhaって](./scenario01/README.md)
+
+# Reference
+* https://code.google.com/archive/p/mysql-master-ha/
+* https://github.com/yoshinorim/mha4mysql-manager
+* https://github.com/yoshinorim/mha4mysql-node
