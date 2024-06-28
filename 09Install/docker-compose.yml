@@ -11,7 +11,9 @@ services:
 
   # CentOS 6-,7-,8
   centos8:
-    image: centos:8
+    image: local/centos8
+    build:
+      context: ../images/os/centos8/
     privileged: true
     command: /sbin/init
 
@@ -21,7 +23,7 @@ services:
     command: /sbin/init
 
   centos6:
-    image: centos6:latest
+    image: local/centos6
     build:
       context: ../images/os/centos6/
     privileged: true
@@ -29,28 +31,28 @@ services:
 
   # SUSE 15
   suse15:
-    image: suse15
+    image: local/suse15
     build:
       context: ../images/os/suse15
     privileged: true
 
   # OpenSUSE 15
   opensuse15:
-    image: opensuse15
+    image: local/opensuse15
     build:
       context: ../images/os/opensuse15
     privileged: true
 
   # Amazon Linux 2,2023
   amazonlinux2023:
-    image: amazonlinux2023:latest
+    image: local/amazonlinux2023
     build:
       context: ../images/os/amazonlinux2023/
     privileged: true
     command: /sbin/init
 
   amazonlinux2:
-    image: amazonlinux2:latest
+    image: local/amazonlinux2
     build:
       context: ../images/os/amazonlinux2/
     privileged: true
@@ -58,21 +60,21 @@ services:
 
   # Debian 10,11,12
   debian12:
-    image: debian12:latest
+    image: local/debian12
     build:
       context: ../images/os/debian12/
     privileged: true
     command: /sbin/init
 
   debian11:
-    image: debian11:latest
+    image: local/debian11
     build:
       context: ../images/os/debian11/
     privileged: true
     command: /sbin/init
 
   debian10:
-    image: debian10:latest
+    image: local/debian10
     build:
       context: ../images/os/debian10/
     privileged: true
@@ -80,19 +82,19 @@ services:
 
   # Ubuntu 2004,2204,2404
   ubuntu2404:
-    image: ubuntu2404:latest
+    image: local/ubuntu2404
     build:
       context: ../images/os/ubuntu2404/
     privileged: true
 
   ubuntu2204:
-    image: ubuntu2204:latest
+    image: local/ubuntu2204
     build:
       context: ../images/os/ubuntu2204/
     privileged: true
 
   ubuntu2004:
-    image: ubuntu2004:latest
+    image: local/ubuntu2004
     build:
       context: ../images/os/ubuntu2004/
     privileged: true
@@ -101,13 +103,13 @@ services:
 
   # Rocky Linux 8,9
   rockylinux9:
-    image: rockylinux9:latest
+    image: local/rockylinux9
     build:
       context: ../images/os/rockylinux9/
     privileged: true
 
   rockylinux8:
-    image: rockylinux8:latest
+    image: local/rockylinux8
     build:
       context: ../images/os/rockylinux8/
     privileged: true
