@@ -64,6 +64,35 @@ MHA 構成と挙動を学びます
 ## シナリオ
  * [mhaって](./scenario01/README.md)
 
+## 既知のバグ
+* docker なのでコンテナを落とすと名前が引けずに MHA によるフェイルオーバーが失敗します  
+  manager で masterha_manager 起動後 node1 を stop
+  ```sh
+  [root@manager ~]# masterha_manager --conf=/etc/app1.cnf 
+  ...
+  Fri Jun 28 09:54:38 2024 - [info] Ping(SELECT) succeeded, waiting until MySQL doesn't respond..
+
+  Fri Jun 28 09:56:35 2024 - [warning] Got error on MySQL select ping: 2006 (MySQL server has gone away)
+  Fri Jun 28 09:56:35 2024 - [info] Executing SSH check script: save_binary_logs --command=test --start_pos=4 --binlog_dir=/var/lib/mysql,/var/log/mysql --output_file=/usr/local/mha/save_binary_logs_test --manager_version=0.58 --binlog_prefix=node1-bin
+  Fri Jun 28 09:56:40 2024 - [warning] HealthCheck: Got timeout on checking SSH connection to node1! at /usr/share/perl5/vendor_perl/MHA/HealthCheck.pm line 343.
+  Fri Jun 28 09:56:41 2024 - [warning] Got error on MySQL connect: 2003 (Can't connect to MySQL server on '172.23.0.2' (4))
+  Fri Jun 28 09:56:41 2024 - [warning] Connection failed 2 time(s)..
+  Fri Jun 28 09:56:44 2024 - [warning] Got error on MySQL connect: 2003 (Can't connect to MySQL server on '172.23.0.2' (4))
+  Fri Jun 28 09:56:44 2024 - [warning] Connection failed 3 time(s)..
+  Fri Jun 28 09:56:47 2024 - [warning] Got error on MySQL connect: 2003 (Can't connect to MySQL server on '172.23.0.2' (4))
+  Fri Jun 28 09:56:47 2024 - [warning] Connection failed 4 time(s)..
+  Fri Jun 28 09:56:47 2024 - [warning] Master is not reachable from health checker!
+  Fri Jun 28 09:56:47 2024 - [warning] Master node1(172.23.0.2:3306) is not reachable!
+  Fri Jun 28 09:56:47 2024 - [warning] SSH is NOT reachable.
+  Fri Jun 28 09:56:47 2024 - [info] Connecting to a master server failed. Reading configuration file /etc/masterha_default.cnf and /etc/app1.cnf again, and trying to connect to all servers to check server status..
+  Fri Jun 28 09:56:47 2024 - [warning] Global configuration file /etc/masterha_default.cnf not found. Skipping.
+  Fri Jun 28 09:56:47 2024 - [info] Reading application default configuration from /etc/app1.cnf..
+  Fri Jun 28 09:56:47 2024 - [info] Reading server configuration from /etc/app1.cnf..
+  Fri Jun 28 09:56:55 2024 - [warning] Got Error: Failed to get IP address on host node1: Name or service not known
+  at /usr/share/perl5/vendor_perl/MHA/Config.pm line 63.
+  Fri Jun 28 09:56:55 2024 - [info] Got exit code 1 (Not master dead).
+  ```
+
 # Reference
 * https://code.google.com/archive/p/mysql-master-ha/
 * https://github.com/yoshinorim/mha4mysql-manager
