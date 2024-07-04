@@ -93,7 +93,7 @@ MHA 構成と挙動を学びます
   Fri Jun 28 09:56:55 2024 - [info] Got exit code 1 (Not master dead).
   ```
 
-# Reference
+## Reference
 * https://code.google.com/archive/p/mysql-master-ha/
 * https://github.com/yoshinorim/mha4mysql-manager
 * https://github.com/yoshinorim/mha4mysql-node

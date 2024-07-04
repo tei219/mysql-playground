@@ -18,19 +18,40 @@ MySQL の単体構成時の挙動やバージョン間での差異について�
 └──────*────────────────────────────────────────────────────────────────┘
       some                                                               
 ```
-各コンテナのパスワードは **なし** で作ってますです  
+各コンテナのパスワードは **なし** です  
 
 ### 起動するやつリスト 
-| service | hostname  | image         | profile | note |
-| ------- | --------- | ------------- | ------- | ---- |
-| node1   | node1     | mysql:8.0     |         |      |
-| ladder  | ladder    | local/ladder  |         | sshd |
-| mysql   | (dynamic) | local/ladder  | extra   |      |
+| service | hostname  | image        | profile | note |
+| ------- | --------- | ------------ | ------- | ---- |
+| node1   | node1     | mysql:8.0    |         |      |
+| ladder  | ladder    | local/ladder |         | sshd |
+| mysql   | (dynamic) | local/ladder | extra   |      |
 
 ※`node1` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 ## シナリオ
- * [バージョン間の違いを確認する](./scenario01/README.md)
- * [エラーを確認する](./scenario02/README.md)
- * [権限管理をする](./scenario03/README.md)
- * [バックアップを取得する](./scenario04/README.md)
+* [MySQLを理解する](./scenario01/README.md)
+* セキュリティー
+* バックアップとリカバリ
+* SQLステートメントと最適化と言語構造
+* 関数と演算子
+* 文字セットと照合順序とデータ型
+* ストレージエンジン
+* バージョン間の違いを確認する
+* https://dev.mysql.com/doc/refman/8.0/ja/partitioning.html
+* https://dev.mysql.com/doc/refman/8.0/ja/stored-objects.html
+* https://dev.mysql.com/doc/refman/8.0/ja/information-schema.html
+* https://dev.mysql.com/doc/refman/8.0/ja/performance-schema.html
+* https://dev.mysql.com/doc/refman/8.0/ja/sys-schema.html
+* https://dev.mysql.com/doc/refman/8.0/ja/error-handling.html
+  
+## 既知のバグ
+
+## References
+* https://dev.mysql.com/doc/
+* https://dev.mysql.com/doc/refman/8.0/ja/
+* https://dev.mysql.com/doc/refman/8.4/en/
+* https://dev.mysql.com/doc/refman/5.7/en/
+* https://dev.mysql.com/doc/index-archive.html
+* https://downloads.mysql.com/docs/refman-5.6-ja.pdf
+* https://downloads.mysql.com/docs/refman-5.1-ja.pdf

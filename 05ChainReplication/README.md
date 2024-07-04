@@ -37,3 +37,7 @@ MySQL のチェーンレプリケーションと挙動を学びます
 
 ## シナリオ
  * [データ連携をする](./scenario01/README.md)
+
+## 既知のバグ
+## References
+* https://dev.mysql.com/doc/refman/8.0/ja/replication.html

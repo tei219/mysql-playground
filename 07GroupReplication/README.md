@@ -62,7 +62,11 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 2. HA発生
 3. わわわ
 
-
+## 既知のバグ
+## References
+* https://dev.mysql.com/doc/refman/8.0/ja/group-replication.html
+* https://dev.mysql.com/doc/refman/8.0/ja/mysql-shell-userguide.html
+  
 =============================
 
 ### 確認

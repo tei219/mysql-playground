@@ -32,4 +32,9 @@ MySQL の複数台構成時の挙動やレプリケーションを学びます
 ※`node1` ~ `node3` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 ## シナリオ
- * [データ連携をする federated](./scenario01/README.md)
+ * [データ連携をする federated](./scenario01/README.md) 代替ストレージエンジン
+
+## 既知のバグ
+
+## References
+* https://dev.mysql.com/doc/refman/8.0/ja/storage-engines.html
