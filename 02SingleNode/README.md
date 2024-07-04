@@ -54,4 +54,3 @@ MySQL の単体構成時の挙動やバージョン間での差異について�
 * https://dev.mysql.com/doc/refman/5.7/en/
 * https://dev.mysql.com/doc/index-archive.html
 * https://downloads.mysql.com/docs/refman-5.6-ja.pdf
-* https://downloads.mysql.com/docs/refman-5.1-ja.pdf
