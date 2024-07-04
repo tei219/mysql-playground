@@ -58,31 +58,30 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 
 
 ## シナリオ
-1. [Group Replication の確認](./scenario01/README.md)
-2. HA発生
-3. わわわ
+1. [GroupReplicationの確認](./scenario01/README.md)
+2. [GroupReplicationのリカバリ](./scenario02/README.md)
+3. [GroupReplicationのリカバリ２](./scenario03/README.md)
 
 ## 既知のバグ
+起動のタイミングによっては initer による初期化が失敗する場合があります  
+メンバのノードが`ONLINE`になっていない場合は下記コマンドで再度初期化を実施してみてください  
+```sh
+~/mysql-playground/07GroupReplication$ docker compose rm initer
+~/mysql-playground/07GroupReplication$ docker compose up initer
+```
+
 ## References
 * https://dev.mysql.com/doc/refman/8.0/ja/group-replication.html
 * https://dev.mysql.com/doc/refman/8.0/ja/mysql-shell-userguide.html
   
-=============================
 
-### 確認
-シングルマスタだよ  
 
-### 外れたで再ジョイン
+
 ### リストアで再ジョイン
 ### マスタ切り替え
 ### ノード追加
 ### ノード削除
 
-
-## docker compose up -d 
-## docker compose run --rm mysql -h node1 -e "$(cat grstatus.sql)"
-
 # scenario
-## down -> start group_replication
 ## (updating) down -> reset master , change master, start group_replication -> fail
 ## (updating) down -> data recovery -> reset master , change master, start group_replication
