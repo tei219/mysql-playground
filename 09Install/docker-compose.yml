@@ -132,7 +132,7 @@ services:
     command: /sbin/init
 
   ladder:
-    image: ladder:latest
+    image: local/ladder
     build:
       context: ../images/ladder/
     ports:
@@ -140,7 +140,7 @@ services:
     tty: true
 
   mysql:
-    image: ladder:latest
+    image: local/latest
     build:
       context: ../images/ladder/
     entrypoint: /usr/bin/mysql

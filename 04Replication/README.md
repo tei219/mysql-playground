@@ -39,5 +39,12 @@ MySQL のレプリケーションと挙動を学びます
  * [データ連携をする](./scenario01/README.md)
 
 ## 既知のバグ
+起動のタイミングによっては initer による初期化が失敗する場合があります  
+メンバのノードが`ONLINE`になっていない場合は下記コマンドで再度初期化を実施してみてください  
+```sh
+~/mysql-playground/04Replication$ docker compose rm initer
+~/mysql-playground/04Replication$ docker compose up initer
+```
+
 ## References
 * https://dev.mysql.com/doc/refman/8.0/ja/replication.html

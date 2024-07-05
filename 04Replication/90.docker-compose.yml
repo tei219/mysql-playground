@@ -1,14 +1,13 @@
-name: mha57
+name: rp90
 services:
 
   node1:
-    image: 57node
+    image: mysql:9.0
     hostname: node1
-    build:
-      context: ../images/mha/57node/
-    volumes:
-      - ./node1/etc/my.cnf:/etc/my.cnf
-    privileged: true
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: |
+      --server_id=1 
     healthcheck:
       test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
       start_period: 20s
@@ -17,13 +16,12 @@ services:
       timeout: 10s
 
   node2:
-    image: 57node
+    image: mysql:9.0
     hostname: node2
-    build:
-      context: ../images/mha/57node/
-    volumes:
-      - ./node2/etc/my.cnf:/etc/my.cnf
-    privileged: true
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: |
+      --server_id=2 
     healthcheck:
       test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
       start_period: 20s
@@ -35,13 +33,12 @@ services:
         condition: service_healthy
 
   node3:
-    image: 57node
+    image: mysql:9.0
     hostname: node3
-    build:
-      context: ../images/mha/57node/
-    volumes:
-      - ./node3/etc/my.cnf:/etc/my.cnf
-    privileged: true
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: |
+      --server_id=3 
     healthcheck:
       test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
       start_period: 20s
@@ -51,16 +48,6 @@ services:
     depends_on:
       node1:
         condition: service_healthy
-
-  manager:
-    image: manager
-    hostname: manager
-    build:
-      context: ../images/mha/manager/
-    volumes:
-      - ./manager/etc/app1.cnf:/etc/app1.cnf
-      - ./manager/usr/lib/systemd/system/mha-app1.service:/usr/lib/systemd/system/mha-app1.service
-    privileged: true
 
   ladder:
     image: local/ladder
@@ -76,6 +63,14 @@ services:
     build:
       context: ../images/ladder/
     entrypoint: /usr/bin/mysql
+    tty: true
+    profiles:
+      - extra
+
+  mysqlsh:
+    image: local/mysqlsh
+    build:
+      context: ../images/mysqlsh/
     tty: true
     profiles:
       - extra

@@ -1,24 +1,17 @@
-name: gr57
+name: gr90
 services:
 
   node1:
-    image: mysql:5.7
+    image: mysql:9.0
     hostname: node1
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=1 
-      --log_bin=binlog
-      --log_slave_updates=on
-      --binlog_checksum=none
       --gtid_mode=on 
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
-      --default-authentication-plugin=mysql_native_password 
-      --transaction_write_set_extraction=XXHASH64
-      --master_info_repository=TABLE
-      --relay_log_info_repository=TABLE
-      --plugin_load=group_replication.so
+      --plugin-load=group_replication.so 
       --relay-log-recovery=on 
       --loose-group-replication-start-on-boot=off 
       --loose-group-replication-group-name=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee 
@@ -27,6 +20,7 @@ services:
       --loose-group-replication-single-primary-mode=on 
       --loose-group-replication-enforce-update-everywhere-checks=off 
       --loose-group_replication_bootstrap_group=off
+      --loose-group_replication_recovery_get_public_key=on
     healthcheck:
       test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
       start_period: 20s
@@ -35,23 +29,16 @@ services:
       timeout: 10s
 
   node2:
-    image: mysql:5.7
+    image: mysql:9.0
     hostname: node2
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=2 
-      --log_bin=binlog
-      --log_slave_updates=on
-      --binlog_checksum=none
       --gtid_mode=on 
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
-      --default-authentication-plugin=mysql_native_password
-      --transaction_write_set_extraction=XXHASH64
-      --master_info_repository=TABLE
-      --relay_log_info_repository=TABLE
-      --plugin_load=group_replication.so
+      --plugin-load=group_replication.so 
       --relay-log-recovery=on 
       --loose-group-replication-start-on-boot=off 
       --loose-group-replication-group-name=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee 
@@ -60,6 +47,7 @@ services:
       --loose-group-replication-single-primary-mode=on 
       --loose-group-replication-enforce-update-everywhere-checks=off 
       --loose-group_replication_bootstrap_group=off
+      --loose-group_replication_recovery_get_public_key=on
     healthcheck:
       test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
       start_period: 20s
@@ -71,23 +59,16 @@ services:
         condition: service_healthy
 
   node3:
-    image: mysql:5.7
+    image: mysql:9.0
     hostname: node3
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=3 
-      --log_bin=binlog
-      --log_slave_updates=on
-      --binlog_checksum=none
       --gtid_mode=on 
       --enforce_gtid_consistency=on 
       --disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE,MEMORY" 
-      --default-authentication-plugin=mysql_native_password 
-      --transaction_write_set_extraction=XXHASH64
-      --master_info_repository=TABLE
-      --relay_log_info_repository=TABLE
-      --plugin_load=group_replication.so
+      --plugin-load=group_replication.so 
       --relay-log-recovery=on 
       --loose-group-replication-start-on-boot=off 
       --loose-group-replication-group-name=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee 
@@ -96,6 +77,7 @@ services:
       --loose-group-replication-single-primary-mode=on 
       --loose-group-replication-enforce-update-everywhere-checks=off 
       --loose-group_replication_bootstrap_group=off
+      --loose-group_replication_recovery_get_public_key=on
     healthcheck:
       test: [ "CMD-SHELL", "mysql -u root -sNe \"select 1;\"" ]
       start_period: 20s

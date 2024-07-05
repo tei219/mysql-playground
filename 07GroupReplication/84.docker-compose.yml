@@ -98,7 +98,6 @@ services:
     tty: true
 
   mysql:
-    hostname: mysql-client
     image: ladder:latest
     build:
       context: ../images/ladder/
@@ -108,7 +107,7 @@ services:
       - extra
 
   mysqlsh:
-    hostname: mysql-shell
+    hostname: local/mysqlsh
     build:
       context: ../images/mysqlsh/
     tty: true
@@ -116,7 +115,7 @@ services:
       - extra
 
   initer:
-    image: ladder:latest
+    image: local/ladder
     build:
       context: ../images/ladder/
     volumes:

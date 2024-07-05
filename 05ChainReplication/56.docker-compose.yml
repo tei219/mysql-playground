@@ -54,7 +54,7 @@ services:
         condition: service_healthy
 
   ladder:
-    image: ladder:latest
+    image: local/ladder
     hostname: ladder
     build:
       context: ../images/ladder/
@@ -63,7 +63,7 @@ services:
     tty: true
 
   mysql:
-    image: ladder:latest
+    image: local/ladder
     build:
       context: ../images/ladder/
     entrypoint: /usr/bin/mysql
@@ -72,7 +72,7 @@ services:
       - extra
 
   mysqlsh:
-    image: mysqlsh:latest
+    image: local/mysqlsh
     build:
       context: ../images/mysqlsh/
     tty: true
@@ -80,7 +80,7 @@ services:
       - extra
 
   initer:
-    image: ladder:latest
+    image: local/ladder
     build:
       context: ../images/ladder/
     volumes:

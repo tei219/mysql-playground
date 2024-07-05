@@ -1,32 +1,29 @@
-name: mn57
+name: mn90
 services:
 
   node1:
-    image: mysql:5.7
+    image: mysql:9.0
     hostname: node1
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=1 
-      --default-authentication-plugin=mysql_native_password
 
   node2:
-    image: mysql:5.7
+    image: mysql:9.0
     hostname: node2
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=2 
-      --default-authentication-plugin=mysql_native_password
 
   node3:
-    image: mysql:5.7
+    image: mysql:9.0
     hostname: node3
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     command: |
       --server_id=3 
-      --default-authentication-plugin=mysql_native_password
 
   ladder:
     image: local/ladder

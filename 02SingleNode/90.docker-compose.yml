@@ -1,13 +1,11 @@
-name: sn56
+name: sn90
 services:
 
   node1:
-    image: mysql:5.6
+    image: mysql:9.0
     hostname: node1
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    command: |
-      --default-authentication-plugin=mysql_native_password
 
   ladder:
     image: local/ladder
