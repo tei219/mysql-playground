@@ -83,5 +83,6 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 ### ノード削除
 
 # scenario
-## (updating) down -> reset master , change master, start group_replication -> fail
-## (updating) down -> data recovery -> reset master , change master, start group_replication
+## (updating) down -> reset master , start group_replication -> fail 
+## (updating) down -> data recovery : clone, start group_replication
+###   data recovery : mysqldump, filecopy -> reset master? , change master?, start group_replication
