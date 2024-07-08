@@ -140,8 +140,13 @@ NAME            IMAGE        COMMAND                  SERVICE   CREATED         
 $ ssh localhost -l root -o StrictHostKeyChecking=no -p 32769
 
 --ladder で mysql 発行
-96dbb631d46a:~# mysql -h mysql80 -sNe "select @@hostname;"
-6cf789da7364
+96dbb631d46a:~# mysql -h mysql80 -e "select @@hostname;"
++--------------+
+| @@hostname   |
++--------------+
+| 6cf789da7364 |
++--------------+
+
 96dbb631d46a:~# 
 96dbb631d46a:~# exit
 logout
