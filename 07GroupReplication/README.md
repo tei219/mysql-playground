@@ -1,6 +1,6 @@
 # Group Replication
 ## なにするだ
-デフォルトイメージは MySQL 8.0 にしています  
+Group Replication の構成と挙動について学びます  
 MySQL 5.6 以下では機能がないので Group Replication は組めまへん  
 
 ```sh
