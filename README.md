@@ -136,7 +136,18 @@ NAME            IMAGE        COMMAND                  SERVICE   CREATED         
 000-ladder-1    000-ladder   "/usr/sbin/sshd -D"      ladder    2 minutes ago   Up 2 minutes   0.0.0.0:32769->22/tcp, :::32769->22/tcp
 000-mysql80-1   mysql:8.0    "docker-entrypoint.s…"   mysql80   2 minutes ago   Up 2 minutes   3306/tcp, 33060/tcp
 
---mysql 発行
+--ladder にログイン
+$ ssh localhost -l root -o StrictHostKeyChecking=no -p 32769
+
+--ladder で mysql 発行
+96dbb631d46a:~# mysql -h mysql80 -sNe "select @@hostname;"
+6cf789da7364
+96dbb631d46a:~# 
+96dbb631d46a:~# exit
+logout
+Connection to localhost closed.
+
+--ホストから mysql 発行
 $ docker compose run --rm mysql -h mysql80 -e "select @@version"
 +-----------+
 | @@version |
