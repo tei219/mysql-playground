@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk --no-cache add openssh bash shadow mysql-client mariadb-connector-c tmux \
+RUN apk --no-cache add openssh bash shadow mysql-client mariadb-connector-c tmux haproxy \
     && echo "root:$(mkpasswd -s </dev/null)" | chpasswd -e \
     && chsh root -s /bin/bash \
     && ssh-keygen -A \
