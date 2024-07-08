@@ -23,10 +23,12 @@
 ### 起動するやつリスト 
 | service | hostname  | image        | profile | note              |
 | ------- | --------- | ------------ | ------- | ----------------- |
+| mysql90 | (dynamic) | mysql:9.0    | extra   | パスなし          |
 | mysql84 | (dynamic) | mysql:8.4    | extra   | パスなし          |
 | mysql80 | (dynamic) | mysql:8.0    |         | パスなし          |
 | mysql57 | (dynamic) | mysql:5.7    | extra   | パスなし          |
 | mysql56 | (dynamic) | mysql:5.6    | extra   | パスなし          |
+| mysql55 | (dynamic) | mysql:5.5    | extra   | パスなし          |
 | ladder  | (dynamic) | local/ladder |         | パスなし 踏み台   |
 | mysql   | (dynamic) | local/ladder | extra   | mysqlクライアント |
 

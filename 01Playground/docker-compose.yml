@@ -40,6 +40,15 @@ services:
     profiles:
       - extra
 
+  mysql55:
+    image: mysql:5.5
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command: |
+      --default-authentication-plugin=mysql_native_password
+    profiles:
+      - extra
+
   ladder:
     image: local/ladder
     build:
