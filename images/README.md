@@ -5,7 +5,7 @@
 
 
 ### ladder as `mysql`
-`mysql client` のコンテナイメージとして エンドポイントを `/usr/bin/mysql` に指定して利用します
+`mysql-client` のコンテナイメージとして エンドポイントを `/usr/bin/mysql` に指定して利用します
 
 ### ladder as `initer`
 環境構築用バッチを起動する `bash` のコンテナイメージとして エンドポイントを `/initer-entrypoint.sh` に指定して利用します  
