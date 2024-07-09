@@ -112,7 +112,7 @@ services:
     tty: true
 
   mysql:
-    image: /local/ladder
+    image: local/ladder
     build:
       context: ../images/ladder/
     entrypoint: /usr/bin/mysql

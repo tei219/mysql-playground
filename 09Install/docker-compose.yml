@@ -18,7 +18,7 @@ services:
     command: /sbin/init
 
   centos7:
-    image: centos:7
+    image: local/centos7
     privileged: true
     command: /sbin/init
 
