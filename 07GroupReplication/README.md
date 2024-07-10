@@ -34,6 +34,7 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 | mysqlsh | (dynamic) | local/mysqlsh | extra   |          |             |
 | initer  | (dynamic) | local/ladder  |         |          | 初期化用    |
 
+※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 ## Group Replication のトポロジ
 ```sh
@@ -64,7 +65,7 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 
 ## 既知のバグ
 起動のタイミングによっては initer による初期化が失敗する場合があります  
-メンバのノードが`ONLINE`になっていない場合は下記コマンドで再度初期化を実施してみてください  
+メンバノードのステータスが`ONLINE`になっていない場合は下記コマンドで再度初期化を実施してみてください  
 ```sh
 ~/mysql-playground/07GroupReplication$ docker compose rm initer
 ~/mysql-playground/07GroupReplication$ docker compose up initer

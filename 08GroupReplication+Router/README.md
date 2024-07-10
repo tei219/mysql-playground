@@ -3,6 +3,7 @@ LBでやったほうが無難かも
 # Group Replication となにかしら Proxy/LB
 ## なにするだ
 ### 起動するやつリスト
+※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 ## Group Replication のトポロジ
 ## シナリオ
 

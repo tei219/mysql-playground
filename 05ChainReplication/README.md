@@ -19,8 +19,6 @@ MySQL のチェーンレプリケーションと挙動を学びます
        some                                                                
 ```
 
-各コンテナのパスワードは **なし** で作ってますです  
-
 ### 起動するやつリスト 
 | service | hostname  | image         | profile | topology     | note        |
 | ------- | --------- | ------------- | ------- | ------------ | ----------- |
@@ -32,7 +30,7 @@ MySQL のチェーンレプリケーションと挙動を学びます
 | mysqlsh | (dynamic) | local/mysqlsh | extra   |              |             |
 | initer  | (dynamic) | local/ladder  |         |              | 初期化用    |
 
-※`node1` ~ `node3` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています  
+※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 ※レプリケーションは **ポジションベース** なレプリケーションです  
 
 ## シナリオ

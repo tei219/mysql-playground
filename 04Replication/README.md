@@ -19,8 +19,6 @@ MySQL のレプリケーションと挙動を学びます
        some                                                                
 ```
 
-各コンテナのパスワードは **なし** で作ってますです  
-
 ### 起動するやつリスト 
 | service | hostname  | image         | profile | topology | note        |
 | ------- | --------- | ------------- | ------- | -------- | ----------- |
@@ -32,7 +30,7 @@ MySQL のレプリケーションと挙動を学びます
 | mysqlsh | (dynamic) | local/mysqlsh | extra   |          |             |
 | initer  | (dynamic) | local/ladder  |         |          | 初期化用    |
 
-※`node1` ~ `node3` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています  
+※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 ※レプリケーションは **ポジションベース** なレプリケーションです  
 
 ## シナリオ
@@ -40,7 +38,7 @@ MySQL のレプリケーションと挙動を学びます
 
 ## 既知のバグ
 起動のタイミングによっては initer による初期化が失敗する場合があります  
-メンバのノードが`ONLINE`になっていない場合は下記コマンドで再度初期化を実施してみてください  
+メンバノードのステータスが`ONLINE`になっていない場合は下記コマンドで再度初期化を実施してみてください  
 ```sh
 ~/mysql-playground/04Replication$ docker compose rm initer
 ~/mysql-playground/04Replication$ docker compose up initer

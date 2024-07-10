@@ -17,8 +17,7 @@ MySQL の単体構成時の挙動やバージョン間での差異について�
 │      │                                                                │
 └──────*────────────────────────────────────────────────────────────────┘
       some                                                               
-```
-各コンテナのパスワードは **なし** です  
+``` 
 
 ### 起動するやつリスト 
 | service | hostname  | image        | profile | note |
@@ -27,7 +26,7 @@ MySQL の単体構成時の挙動やバージョン間での差異について�
 | ladder  | ladder    | local/ladder |         | sshd |
 | mysql   | (dynamic) | local/ladder | extra   |      |
 
-※`node1` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
+※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 ## シナリオ
 * [MySQLを理解する](./scenario01/README.md)

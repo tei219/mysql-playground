@@ -3,7 +3,6 @@
 `sshd` のコンテナイメージです。各シナリオ環境への踏み台として起動します  
 下記にあるようにいくつかの用途にも使えるように作成しています  
 
-
 ### ladder as `mysql`
 `mysql-client` のコンテナイメージとして エンドポイントを `/usr/bin/mysql` に指定して利用します
 
@@ -38,6 +37,9 @@ Thu May 30 09:44:14 UTC 2024
        valid_lft forever preferred_lft forever
 ```
 </details>
+
+### ladder as `haproxy`
+`haproxy` のコンテナイメージとして エンドポイントを `/usr/sbin/haproxy,-f,/etc/haproxy/haproxy.cfg` に指定して利用します
 
 ## `mysqlsh`
 `mysql-shell (mysqlsh)` のコンテナイメージです  

@@ -17,7 +17,6 @@ MySQL の複数台構成時の挙動やレプリケーションを学びます
  └──────*────────────────────────────────────────────────────────────────┘ 
        some                                                                
 ```
-各コンテナのパスワードは **なし** で作ってますです  
 
 ### 起動するやつリスト 
 | service | hostname  | image         | profile | topology | note        |
@@ -29,7 +28,7 @@ MySQL の複数台構成時の挙動やレプリケーションを学びます
 | mysql   | (dynamic) | local/ladder  | extra   |          |             |
 | mysqlsh | (dynamic) | local/mysqlsh | extra   |          |             |
 
-※`node1` ~ `node3` は `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
+※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 ## シナリオ
  * [データ連携をする federated](./scenario01/README.md) 代替ストレージエンジン

@@ -21,7 +21,6 @@ MHA 構成と挙動を学びます
  └──────*────────────────────────────────────────────────────────────────┘ 
        some                                                                
 ```
-各コンテナのパスワードは **なし** で作ってますです  
 
 ### 起動するやつリスト 
 | service | hostname  | image         | profile | topology     | note        |
@@ -34,8 +33,7 @@ MHA 構成と挙動を学びます
 | mysql   | (dynamic) | local/ladder  | extra   |              |             |
 | initer  | (dynamic) | local/ladder  |         |              | 初期化用    |
 
-※`profile` が `extra` になっているものは自動起動しません  
-※`node1` ~ `node3` は `docker-compose.yml` に依ります。デフォルトは MySQL 5.7 にしています
+※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
 
 ## MHAのトポロジ
