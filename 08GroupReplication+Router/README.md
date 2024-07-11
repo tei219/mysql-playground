@@ -2,8 +2,11 @@ LBでやったほうが無難かも
 
 # Group Replication となにかしら Proxy/LB
 ## なにするだ
+Group Replication 利用時にマスタとスレーブに振り分ける機構を用意して挙動を確認します  
+
 ### 起動するやつリスト
 ※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
+
 ## Group Replication のトポロジ
 ## シナリオ
 
