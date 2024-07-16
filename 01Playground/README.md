@@ -36,6 +36,7 @@
 
 ## シナリオ
  * [環境を理解する](./scenario01/README.md)
+ * [サンプルデータベースを利用する](./scenario02/README.md)
 
 ## 既知のバグ
 
