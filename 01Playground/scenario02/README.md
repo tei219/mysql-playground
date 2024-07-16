@@ -183,7 +183,8 @@ MySQL [sakila]> show tables;
 | store                      |
 +----------------------------+
 23 rows in set (0.001 sec)
-
+```
+```
 MySQL [sakila]> desc actor;
 +-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
 | Field       | Type              | Null | Key | Default           | Extra                                         |
@@ -194,7 +195,8 @@ MySQL [sakila]> desc actor;
 | last_update | timestamp         | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
 +-------------+-------------------+------+-----+-------------------+-----------------------------------------------+
 4 rows in set (0.001 sec)
-
+```
+```
 MySQL [sakila]> show create table actor\G;
 *************************** 1. row ***************************
        Table: actor
@@ -225,7 +227,8 @@ MySQL [sakila]> desc actor_info;
 | film_info  | text              | YES  |     | NULL    |       |
 +------------+-------------------+------+-----+---------+-------+
 4 rows in set (0.001 sec)
-
+```
+```
 MySQL [sakila]> show create table actor_info\G;
 *************************** 1. row ***************************
                 View: actor_info
@@ -235,7 +238,8 @@ collation_connection: utf8mb4_0900_ai_ci
 1 row in set (0.000 sec)
 
 ERROR: No query specified
-
+```
+```
 MySQL [sakila]> show create view actor_info\G;
 *************************** 1. row ***************************
                 View: actor_info
@@ -267,7 +271,8 @@ collation_connection: utf8mb4_0900_ai_ci
 *************************** 2. row ***************************
 ... snip ...
 6 rows in set (0.001 sec)
-
+```
+```
 MySQL [sakila]> show create trigger customer_create_date\G;
 *************************** 1. row ***************************
                Trigger: customer_create_date
@@ -336,7 +341,8 @@ END
 *************************** 2. row ***************************
 ... snip ...
 3 rows in set (0.001 sec)
-
+```
+```
 MySQL [sakila]> show create procedure film_in_stock\G;
 *************************** 1. row ***************************
            Procedure: film_in_stock
@@ -442,7 +448,8 @@ END
 *************************** 2. row ***************************
 ... snip ...
 3 rows in set (0.001 sec)
-
+```
+```
 MySQL [sakila]> show create function get_customer_balance\G
 *************************** 1. row ***************************
             Function: get_customer_balance
