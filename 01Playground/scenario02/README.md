@@ -12,7 +12,7 @@
 
 ## やってみよう <!-- omit in toc -->
 ### サンプルデータベースって
-公式のサンプルデータベースがいくつかあるのでテストデータとして導入してみましょう  
+公式のサンプルデータベースがいくつかあるのでテストデータとして `sakila` を導入してみましょう  
 * https://dev.mysql.com/doc/employee/en/
 * https://dev.mysql.com/doc/world-setup/en/
 * https://dev.mysql.com/doc/sakila/en/
