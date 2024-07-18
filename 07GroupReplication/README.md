@@ -62,6 +62,9 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 1. [GroupReplicationの確認](./scenario01/README.md)
 2. [GroupReplicationのリカバリ](./scenario02/README.md)
 3. [GroupReplicationのリカバリ２](./scenario03/README.md)
+4. マスタ切り替え
+5. ノード追加
+6. ノード削除
 
 ## 既知のバグ
 起動のタイミングによっては initer による初期化が失敗する場合があります  
@@ -74,16 +77,3 @@ MySQL 5.6 以下では機能がないので Group Replication は組めまへん
 ## References
 * https://dev.mysql.com/doc/refman/8.0/ja/group-replication.html
 * https://dev.mysql.com/doc/refman/8.0/ja/mysql-shell-userguide.html
-  
-
-
-
-### リストアで再ジョイン
-### マスタ切り替え
-### ノード追加
-### ノード削除
-
-# scenario
-## (updating) down -> reset master , start group_replication -> fail 
-## (updating) down -> data recovery : clone, start group_replication
-###   data recovery : mysqldump, filecopy -> reset master? , change master?, start group_replication
