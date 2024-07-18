@@ -19,14 +19,14 @@ MySQL の複数台構成時の挙動やレプリケーションを学びます
 ```
 
 ### 起動するやつリスト 
-| service | hostname  | image         | profile | topology | note        |
-| ------- | --------- | ------------- | ------- | -------- | ----------- |
-| node1   | node1     | mysql:8.0     |         |          | server-id=1 |
-| node2   | node2     | mysql:8.0     |         |          | server-id=2 |
-| node3   | node3     | mysql:8.0     |         |          | server-id=3 |
-| ladder  | ladder    | local/ladder  |         |          | sshd        |
-| mysql   | (dynamic) | local/ladder  | extra   |          |             |
-| mysqlsh | (dynamic) | local/mysqlsh | extra   |          |             |
+| service | hostname  | image         | profile | topology | note         |
+| ------- | --------- | ------------- | ------- | -------- | ------------ |
+| node1   | node1     | mysql:8.0     |         |          | server-id=1  |
+| node2   | node2     | mysql:8.0     |         |          | server-id=2  |
+| node3   | node3     | mysql:8.0     |         |          | server-id=3  |
+| ladder  | ladder    | local/ladder  |         |          | sshd         |
+| mysql   | (dynamic) | local/ladder  | extra   |          | mysql-client |
+| mysqlsh | (dynamic) | local/mysqlsh | extra   |          | mysqlsh      |
 
 ※MySQLのバージョンは `docker-compose.yml` に依ります。デフォルトは MySQL 8.0 にしています
 
