@@ -178,6 +178,6 @@ Going to remove 000-ladder-1, 000-mysql80-1
  * **Failed to get D-Bus connection: No such file or directory**  
 `systemd` を利用するコンテナで発生する上記エラーは dockerホスト の `Cgroup Version` に起因します  
 `v2` のホストで `v1` のイメージは起動できず上記エラーがでます  
-ホストの version 確認は `$ stat -fc %T /sys/fs/cgroup/` の結果が `tmpfs` なら `v1`、`cgroup2fs` なら`v2` で確認できます（2敗）  
+ホストの version 確認は `$ stat -fc %T /sys/fs/cgroup/` の結果が `tmpfs` なら `v1`、`cgroup2fs` なら`v2` です（2敗）  
 
 ## 既知のバグ
