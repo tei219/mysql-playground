@@ -180,4 +180,14 @@ Going to remove 000-ladder-1, 000-mysql80-1
 `v2` のホストで `v1` のイメージは起動できず上記エラーがでます  
 ホストの version 確認は `$ stat -fc %T /sys/fs/cgroup/` の結果が `tmpfs` なら `v1`、`cgroup2fs` なら`v2` です（2敗）  
 
+* **volumes 使ってます**
+一部のサービスで volumes マウント使っているので `docker context` をリモートにして利用していると正常に起動しません  
+docker サービスを実行しているホストで利用してください  
+```
+...
+    volumes:
+      - ./initer.d:/initer.d:ro
+...
+```
+
 ## 既知のバグ
