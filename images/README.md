@@ -4,7 +4,9 @@
 下記にあるようにいくつかの用途にも使えるように作成しています  
 
 ### ladder as `mysql`
-`mysql-client` のコンテナイメージとして エンドポイントを `/usr/bin/mysql` に指定して利用します
+`mysql-client` のコンテナイメージとして エンドポイントを `/usr/bin/mysql` に指定して利用します  
+最近のアップデートでSSLが標準必須になったので、 `--skip-ssl-verify-server-cert` オプションを指定すると幸せです  
+`mysql: Deprecated program name. It will be removed in a future release, use '/usr/bin/mariadb' instead`  悲しい  
 
 ### ladder as `initer`
 環境構築用バッチを起動する `bash` のコンテナイメージとして エンドポイントを `/initer-entrypoint.sh` に指定して利用します  
