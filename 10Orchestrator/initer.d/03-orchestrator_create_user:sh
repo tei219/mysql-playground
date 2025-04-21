@@ -1,0 +1,15 @@
+set -f 
+
+echo $(date) show slave status each node
+for node in \
+    node1 \
+    node2 \
+    node3 
+do
+    echo "show create user on $node"
+    mysql -h $node -e "CREATE USER 'orchestrator'@'%' IDENTIFIED BY 'Orc@1234';"
+    mysql -h $node -e "GRANT SUPER, PROCESS, REPLICATION SLAVE, RELOAD ON *.* TO 'orchestrator'@'%';"
+    mysql -h $node -e "GRANT SELECT ON mysql.slave_master_info TO 'orchestrator'@'%';"
+    mysql -h $node -e "GRANT DROP ON `_pseudo_gtid_`.* TO 'orchestrator'@'%';"
+    mysql -h $node -e "GRANT SELECT ON meta.* TO 'orchestrator'@'%';"
+done

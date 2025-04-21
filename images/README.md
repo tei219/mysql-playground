@@ -6,6 +6,7 @@
 ### ladder as `mysql`
 `mysql-client` のコンテナイメージとして エンドポイントを `/usr/bin/mysql` に指定して利用します  
 最近のアップデートでSSLが標準必須になったので、 `--skip-ssl-verify-server-cert` オプションを指定すると幸せです  
+↑ `/etc/my.cnf.d/mysql-client.cnf` に書いておきました  
 `mysql: Deprecated program name. It will be removed in a future release, use '/usr/bin/mariadb' instead`  悲しい  
 
 ### ladder as `initer`
